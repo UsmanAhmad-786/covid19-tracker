@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Header from './Components/Header'
+import { fetchData } from './Components/FetchApi';
+import Countries from './Components/Countries'
+import Papers from './Components/Papers'
+import Doughnutc from './Components/DoughnutChart'
 
-function App() {
+
+
+
+class App extends React.Component {
+  state = {
+    fdata: {},
+    country: '',
+  }
+
+  async componentDidMount() {
+    const data = await fetchData();
+
+    this.setState({ fdata:data });
+  }
+
+  handleCountryChange = async (pcountry) => {
+    const data = await fetchData(pcountry);
+
+    this.setState({ fdata:data, country: pcountry });
+  }
+
+  render() {
+    const { fdata, country } = this.state;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+
+       <Header />
+       <Papers data={fdata} />
+       <Countries handleCountryChange={this.handleCountryChange} />
+       <Doughnutc data={fdata} country={country} />
+        
     </div>
   );
+  }
 }
 
 export default App;
