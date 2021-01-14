@@ -36,7 +36,7 @@ const data = {
 
     return (
       <div>
-        <h2 style={{textAlign:'center', margin:'70px 0px 30px 0px'}}>Chart Representation of {country} </h2>
+        <h2 style={{textAlign:'center', margin:'70px 0px 30px 0px'}}>Chart Representation of <br/> {country} Statistics </h2>
         <Doughnut data={data} height={90} />
       </div>
     );
