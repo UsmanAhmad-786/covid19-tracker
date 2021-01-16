@@ -4,10 +4,10 @@ import {Doughnut, Bar} from 'react-chartjs-2';
 
 
 
+
 const Charts = ({ data: {confirmed, recovered, deaths}, country}) => {
 
-	
-	if(!confirmed){
+	if(!confirmed ){
 		return 'Loading...'
 	}
 
@@ -38,6 +38,17 @@ const data = {
 		]
 	}]
 };
+const options = {
+    scales: {
+      xAxes: [
+        {
+          barPercentage: 0.6
+        }
+	  ],
+    }
+  };
+
+ 
 
 
 
@@ -47,7 +58,7 @@ const data = {
         <h3 style={{textAlign:'center', margin:'70px 0px 30px 0px'}}>Chart Representation of {country} </h3>
         <Doughnut data={data} height={90} />
 		<br/>
-		<Bar data={data} />
+		<Bar data={data} options={options} />
       </div>
     );
   
