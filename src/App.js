@@ -3,7 +3,7 @@ import Header from './Components/Header'
 import { fetchData } from './Components/FetchApi';
 import Countries from './Components/Countries'
 import Papers from './Components/Papers'
-import Doughnutc from './Components/DoughnutChart'
+import Charts from './Components/DBChart'
 
 
 
@@ -35,7 +35,7 @@ class App extends React.Component {
        <Header />
        <Papers data={fdata} />
        <Countries handleCountryChange={this.handleCountryChange} />
-       <Doughnutc data={fdata} country={country} />
+       <Charts data={fdata} country={country} />
         
     </div>
   );

@@ -1,9 +1,12 @@
 import React from 'react';
-import {Doughnut} from 'react-chartjs-2';
+import {Doughnut, Bar} from 'react-chartjs-2';
 
 
-const Doughnutc = ({ data: {confirmed, recovered, deaths}, country}) => {
-	//console.log({confirmed});
+
+
+const Charts = ({ data: {confirmed, recovered, deaths}, country}) => {
+
+	
 	if(!confirmed){
 		return 'Loading...'
 	}
@@ -11,14 +14,17 @@ const Doughnutc = ({ data: {confirmed, recovered, deaths}, country}) => {
 	if(country===""){
 		country="Global"
 	}
-	
+	//console.log({confirmed});
+
 const data = {
 	labels: [
 		'Infected',
 		'Recovered',
 		'Deaths'
 	],
+
 	datasets: [{
+		label: 'People',
 		data: [confirmed.value, recovered.value, deaths.value],
 		backgroundColor: [
 		'Blue',
@@ -34,13 +40,17 @@ const data = {
 };
 
 
+
+
     return (
       <div>
         <h3 style={{textAlign:'center', margin:'70px 0px 30px 0px'}}>Chart Representation of {country} </h3>
         <Doughnut data={data} height={90} />
+		<br/>
+		<Bar data={data} />
       </div>
     );
   
 
 }
-export default Doughnutc;
+export default Charts;
