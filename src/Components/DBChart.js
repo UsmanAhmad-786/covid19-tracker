@@ -24,7 +24,7 @@ const data = {
 	],
 
 	datasets: [{
-		label: 'People',
+		label: 'Infected People',
 		data: [confirmed.value, recovered.value, deaths.value],
 		backgroundColor: [
 		'Blue',
